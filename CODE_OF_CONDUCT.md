@@ -22,9 +22,15 @@ The following behaviours are considered unacceptable and will not be tolerated:
 4.	Unprofessional Conduct: Conduct that disrupts the professional and collaborative atmosphere of the team.
 
 ## Reporting Violations
-If you experience or witness a violation of this Code of Conduct, please report it promptly to [appropriate contact person]. All reports will be treated confidentially and will be thoroughly investigated.
+If you happen to experience or witness a violation of this Code of Conduct, please report it promptly to [appropriate contact person]. All reports will be treated confidentially and will be thoroughly investigated.
 ## Consequences
 Violations of this Code of Conduct may result in disciplinary actions, ranging from verbal warnings to termination of employment or project participation.
 ## Conclusion
 We contribute to a positive and inclusive software engineering environment by adhering to this Code of Conduct. Together, we build a culture that values diversity, promotes collaboration, and fosters innovation.
+
+## Backlog
+Fabrizio Morales will keep track of all the tasks that need to be done by the group.
+
+## Meeting
+We will meet every Tuesday and Friday to review the progress of our project. The meeting will be for 1 hour.
 
