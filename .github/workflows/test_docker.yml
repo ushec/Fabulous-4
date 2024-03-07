@@ -2,10 +2,10 @@ name: Test Run Docker Container
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - develop
+  # push:
+    # branches:
+      # - main
+      # - develop
 
 jobs:
   docker_compose_up:
