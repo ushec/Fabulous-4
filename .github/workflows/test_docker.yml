@@ -1,0 +1,22 @@
+name: Test Run Docker Container
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      # - main
+      - develop
+
+jobs:
+  docker_compose_up:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Docker Compose
+        run: docker-compose up -d
+      
+      - name: Stop Docker Services
+        run: docker-compose down
