@@ -1,0 +1,10 @@
+h2 Search Form
+form(action="/search", method="POST")
+  label(for="searchInput") Search Term:
+  input(type="text", id="searchInput", name="searchInput")
+  label(for="searchType") Search Type:
+  select(id="searchType", name="searchType")
+    option(value="city") City
+    option(value="country") Country
+    option(value="countrylanguage") Language
+  button(type="submit") Search

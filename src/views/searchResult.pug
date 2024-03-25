@@ -1,0 +1,37 @@
+extends layout
+
+block appContent
+  h2 Search Result
+  p City Name: #{searchResult.Name}
+  p Country Code: #{searchResult.CountryCode}
+  p District: #{searchResult.District}
+  p Population: #{searchResult.Population}
+  p Language: #{searchResult.Language}
+  p Is Official: #{searchResult.IsOfficial}
+  p Percentage: #{searchResult.Percentage}
+  p Country Name: #{searchResult.Name}
+  p Continent: #{searchResult.Continent}
+  p Region: #{searchResult.Region}
+  p Population: #{searchResult.Population}
+  p Country Code: #{searchResult.CountryCode}
+  p Language: #{searchResult.Language}
+
+//- extends layout
+
+//- block appContent
+//-   h2 Search Result
+//-   if searchType === 'city'
+//-     p City Name: #{searchResult.Name}
+//-     p Country Code: #{searchResult.CountryCode}
+//-     p District: #{searchResult.District}
+//-     p Population: #{searchResult.Population}
+//-   else if searchType === 'country'
+//-     p Country Name: #{searchResult.Name}
+//-     p Continent: #{searchResult.Continent}
+//-     p Region: #{searchResult.Region}
+//-     p Population: #{searchResult.Population}
+//-   else if searchType === 'language'
+//-     p Country Code: #{searchResult.CountryCode}
+//-     p Language: #{searchResult.Language}
+//-     p Is Official: #{searchResult.IsOfficial}
+//-     p Percentage: #{searchResult.Percentage}
