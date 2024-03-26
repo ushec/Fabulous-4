@@ -11,10 +11,10 @@ async function waitForDB() {
     try {
       // Try to connect to the database
       const pool = mysql.createPool({
-        host: process.env.MYSQL_HOST || 'localhost',
+        host: process.env.MYSQL_HOST,
         user: process.env.MYSQL_USER,
-        password: process.env.MYSQL_PASSWORD,
-        database: process.env.MYSQL_DATABASE || 'world',
+        // password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DATABASE,
       });
 
       console.log('Database is available...Starting server...');
