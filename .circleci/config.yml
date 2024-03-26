@@ -1,19 +1,15 @@
 version: 2.1
-
 orbs:
-  docker: circleci/docker@1.7.0
-
+  node: circleci/node@5.2.0
+  
 jobs:
   test-docker:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
-      - docker/install-docker-compose
-      
       - run: |
-          docker-compose up -d
-          docker-compose down
+          npx mocha src/student.test.js
 
 workflows:
   docker_compose_up:
