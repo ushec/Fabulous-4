@@ -1,0 +1,12 @@
+exptends layout
+block appContent
+   // continents.pug
+h3 All Continents
+table
+    thead
+        tr
+            th Continent
+    tbody
+        each continents in continent
+            tr
+                td= continents.continent
