@@ -1,29 +1,17 @@
 version: 2.1
 
 jobs:
-  docker_compose_up:
+  test-docker:
     docker:
-      - image: cimg/node:21.6.2
-
-  steps:
-    - checkout
-
-    - runs:
-      name: Docker compose up
-      command: |
-        docker-compose up -d
-
-    - runs:
-      name: Stop Docker Services
-      command: |
-        docker-compose down
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: |
+          docker-compose up -d
+          
+          docker-compose down
 
 workflows:
-  docker_compose:
+  docker_compose_up:
     jobs:
-      - docker_compose_up:
-        filters:
-          branches:
-            only:
-              - master
-              - develop
+      - test-docker
