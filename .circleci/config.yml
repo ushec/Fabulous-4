@@ -1,17 +1,24 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.2.0
   
 jobs:
   test-docker:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/buildpack-deps:bionic-curl
     steps:
       - checkout
-      - run: |
-          npx mocha src/student.test.js
+      - setup_remote_docker
+      - run: 
+          name: Build
+          command: docker-compose build
+      - run: 
+          name: Start container
+          command: docker-compose up -d
+      - run:
+          name: Stop container
+          command: docker-compose down
 
 workflows:
-  docker_compose_up:
+  version: 2
+  build:
     jobs:
       - test-docker
