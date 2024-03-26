@@ -5,8 +5,6 @@ jobs:
     docker:
       - image: cimg/node:21.6.2
 
-  working_directory: ~/repo
-
   steps:
     - checkout
 
