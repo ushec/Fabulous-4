@@ -1,14 +1,18 @@
 version: 2.1
 
+orbs:
+  docker: circleci/docker@1.7.0
+
 jobs:
   test-docker:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
+      - docker/install-docker-compose
+      
       - run: |
           docker-compose up -d
-          
           docker-compose down
 
 workflows:
