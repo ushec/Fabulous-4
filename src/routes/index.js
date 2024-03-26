@@ -65,6 +65,8 @@ router.post("/search", async (req, res) => {
     const { searchType, searchInput } = req.body;
 
     let searchResult;
+    console.log('searchType:', searchType);
+    console.log('searchInput:', searchInput);
 
     if (searchType === "city") {
       searchResult = await searchCityInDatabase(searchInput);
@@ -104,8 +106,6 @@ router.get("/countries", async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
-module.exports = router;
 
 
 router.get("/continent", async (req, res) => {

@@ -4,7 +4,7 @@ const waitForDB  = require('../data/database.js');
 async function getCountries() {
     try {
         const connection = await waitForDB();
-        const [rows] = await connection.query("SELECT Code, Name, Continent, Region, SurfaceArea, Population, Capital FROM country");
+        const [rows] = await connection.query("SELECT Code, Name, Continent, Region, SurfaceArea, IndepYear, LifeExpectancy, Population, Capital FROM country");
 
         console.log(`/countries: ${rows.length} rows`);
         return rows;
@@ -17,7 +17,7 @@ async function getCountries() {
 async function searchCountryInDatabase(countryName) {
     try {
       const connection = await waitForDB();
-      const [rows] = await connection.query("SELECT * FROM country WHERE Name = ?", [countryName]);
+      const [rows] = await connection.query("SELECT Code, Name, Continent, Region, SurfaceArea, IndepYear, LifeExpectancy, Population, Capital FROM country WHERE Name = ?", [countryName]);
       if (rows.length > 0) {
         return rows[0]; // Return the first matching country
       } else {

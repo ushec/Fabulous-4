@@ -1,10 +1,39 @@
 version: '3.8'
 
 services:
-  web:
-    build: 
-      context: .
-      dockerfile: docker/Dockerfile
-    container_name: website
+  www:
+    image: php:7.4-apache
+    volumes:
+      - "./:/var/www/html"  # sync project dir with container web dir
     ports:
-      - 3000:3000
+      - "8083:80"
+    build:
+      context: .
+      dockerfile: ./src/Dockerfile
+    depends_on:
+      - db  
+    restart: on-failure
+    environment:
+      - MYSQL_HOST=db  
+      - NODE_ENV=production 
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "1"
+    volumes:
+      - "./data:/docker-entrypoint-initdb.d" # sync db data with container db data
+    ports:
+      - "8084:80"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 8085
+    ports:
+      - "8082:80"

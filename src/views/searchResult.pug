@@ -13,25 +13,52 @@ block appContent
   p Continent: #{searchResult.Continent}
   p Region: #{searchResult.Region}
   p Population: #{searchResult.Population}
+  p GovernmentForm: #{searchResult.GovernmentForm}
   p Country Code: #{searchResult.CountryCode}
   p Language: #{searchResult.Language}
+
+
 
 //- extends layout
 
 //- block appContent
 //-   h2 Search Result
-//-   if searchType === 'city'
-//-     p City Name: #{searchResult.Name}
-//-     p Country Code: #{searchResult.CountryCode}
-//-     p District: #{searchResult.District}
-//-     p Population: #{searchResult.Population}
-//-   else if searchType === 'country'
-//-     p Country Name: #{searchResult.Name}
-//-     p Continent: #{searchResult.Continent}
-//-     p Region: #{searchResult.Region}
-//-     p Population: #{searchResult.Population}
-//-   else if searchType === 'language'
-//-     p Country Code: #{searchResult.CountryCode}
-//-     p Language: #{searchResult.Language}
-//-     p Is Official: #{searchResult.IsOfficial}
-//-     p Percentage: #{searchResult.Percentage}
+//-   p Debug: #{JSON.stringify(searchResult)}
+
+//-   //- Check if searchResult exists and has data
+//-   if searchResult
+//-     if searchType === 'city'
+//-       p City Name: #{searchResult.Name}
+//-       p Country Code: #{searchResult.CountryCode}
+//-       p District: #{searchResult.District}
+//-       p Population: #{searchResult.Population}
+//-     else if searchType === 'country'
+//-       p Country Code: #{searchResult.Code}
+//-       p Country Name: #{searchResult.Name}
+//-       p Continent: #{searchResult.Continent}
+//-       p Region: #{searchResult.Region}
+//-       p Surface Area: #{searchResult.SurfaceArea}
+//-       p IndepYear: #{searchResult.IndepYear}
+//-       p Population: #{searchResult.Population}
+//-       p Life Expectancy: #{searchResult.LifeExpectancy}
+//-       p GNP: #{searchResult.GNP}
+//-       p GNPOld: #{searchResult.GNPOld}
+//-       p LocalName: #{searchResult.LocalName}
+//-       p GovernmentForm: #{searchResult.GovernmentForm}
+//-       p HeadOfState: #{searchResult.HeadOfState}
+//-       p Capital: #{searchResult.Capital}
+//-       p Code2: #{searchResult.Code2}
+//-     else if searchType === 'language'
+//-       p Country Code: #{searchResult.CountryCode}
+//-       p Language: #{searchResult.Language}
+//-       p Is Official: #{searchResult.IsOfficial}
+//-       p Percentage: #{searchResult.Percentage}
+//-   else
+//-     //- Display a message if no search results were found
+//-     p No results were found for the given search criteria.
+
+
+
+
+
+

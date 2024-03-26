@@ -14,6 +14,9 @@ COPY package*.json package-lock.json ./
 # Install the dependencies
 RUN npm install
 
+# Install nodemon and pug globally
+RUN npm install -g nodemon pug pug-cli typescript ts-node
+
 # Install concurrently globally
 RUN npm install -g concurrently
 
@@ -29,5 +32,12 @@ COPY . .
 EXPOSE 3000
 EXPOSE 80
 EXPOSE 443
-# Command to run the application
-CMD [ "npm", "start", "build", "dev"]
+
+# Copy entrypoint script into the container
+COPY src/entrypoint.sh /entrypoint.sh
+
+# Make entrypoint script executable
+RUN chmod +x /entrypoint.sh
+
+# Specify the entrypoint script
+ENTRYPOINT [ "/entrypoint.sh" ]
