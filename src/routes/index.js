@@ -13,10 +13,20 @@ const countryController = require('../controllers/countryController.js');
 const { searchCityInDatabase } = require('../model/cityModel.js');
 const { searchCountryInDatabase } = require('../model/countryModel.js');
 const { searchLanguageInDatabase } = require('../model/countryLanguage.js');
+const { User } = require("../model/user.js");
 const appSetup = require('../appSetup');
 dotenv.config();
 const bodyParser = require('body-parser');
 const app = express();  
+
+// Set the sessions
+var session = require('express-session');
+router.use(session({
+ secret: 'secretkeysdfjsflyoifasd',
+ resave: false,
+ saveUninitialized: true,
+ cookie: { secure: false }
+}));
 
 // Parse JSON bodies (as sent by API clients)
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,9 +44,16 @@ app.use(router)
 // Use the router from appSetup.js
 router.use('/pug', appSetup);
 
-router.get('/', (req, res) => {
-    res.render('index', { name: "Tunde" });
-  });
+// Create a route for root - /
+router.get("/", function(req, res) {
+  console.log(req.session);
+  if (req.session.uid) {
+  res.send('Welcome back, ' + req.session.uid + '!');
+  } else {
+  res.send('Please login to view this page!');
+  }
+  res.end();
+ });
 
 // router.post("/search", cityController.searchCity);
 // router.post("/search", countryController.searchCountry);
@@ -46,6 +63,73 @@ router.get("/search", (req, res) => {
   // Render the search form view
   res.render('searchForm');
 });
+
+// Register
+router.get('/register', function (req, res) {
+  res.render('register');
+ });
+
+ router.post('/set-password', function (req, res) {
+  params = req.body;
+  var user = new User(params.email);
+  try {
+    user.getIdFromEmail().then( uId => {
+      if(uId) {
+        user.setUserPassword(params.password).then ( result => {
+          res.redirect('/menu/');
+        });
+      }
+      else {
+        // If no existing user is found, add a new one
+        user.addUser(params.email).then( Promise => {
+        res.send('Perhaps a page where a new user sets a programme would')
+         });
+      }
+    })
+  } catch (err) {
+    console.error(`Error while adding password `, err.message);
+  }
+ });
+ 
+ // Login
+ router.get('/login', function (req, res) {
+  res.render('login');
+ });
+
+ router.post('/authenticate', function (req, res) {
+  params = req.body;
+  var user = new User(params.email);
+  try {
+    user.getIdFromEmail().then(uId => {
+      if (uId) {
+        user.authenticate(params.password).then(match => {
+          if (match) {
+            // Set the session for this user
+            req.session.uid = uId;
+            req.session.loggedIn = true;
+            res.redirect('/menu/');
+          }
+          else {
+            // TODO improve the user journey here
+            res.send()
+            res.send('invalid password');
+          }
+      });
+    }
+    else {
+      res.send('invalid email');
+    }
+  })
+  } catch (err) {
+      console.error(`Error while comparing `, err.message);
+  }
+ });
+
+ // Logout
+router.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.redirect('/login');
+  });
 
 // // Define route handler for POST requests to "/search"
 // router.post("/search", async (req, res) => {
