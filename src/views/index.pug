@@ -1,12 +1,9 @@
 extends layout.pug
 
-block appContent
-    <head>
-    <body><header><h1>Fabulous4</h1></header><main><h2>Welcome to the Fabulous Website</h2>
-    <div class="center"><button onclick="goToMenu()">Sign in</button></body></div>
-    <script>
-        function goToMenu() {
-            window.location.href = 'http://127.0.0.1:3000/menu';}
-    </script>
-    </head>
-    
+block content
+    main
+        include includes/header.pug
+        block appContent
+        include includes/footer.pug
+    footer
+        p Copyright 2021
