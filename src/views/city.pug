@@ -1,15 +1,25 @@
-h3 All Cities
-table
-    thead
-        tr
-            th Name
-            th CountryCode
-            th District
-            th Population
-    tbody
-        each city in cities
-            tr
-                td= city.Name
-                td= city.CountryCode
-                td= city.District
-                td= city.Population
+extends layout
+
+block content 
+    h2 #{city.name}
+    p #{city.country.name}, #{city.country.region}
+    form(action=`/cities/${city.id}`, method="POST")
+        input(type="text", name="name", placeholder=city.name)
+        input(type="submit")
+
+
+//- h3 All Cities
+//- table
+//-     thead
+//-         tr
+//-             th Name
+//-             th CountryCode
+//-             th District
+//-             th Population
+//-     tbody
+//-         each city in cities
+//-             tr
+//-                 td= city.Name
+//-                 td= city.CountryCode
+//-                 td= city.District
+//-                 td= city.Population
