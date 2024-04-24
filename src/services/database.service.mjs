@@ -16,6 +16,7 @@ export default class DatabaseService {
             user: "root",
             password: "",
             database: "world",
+            port: 3306,
         });
 
         return new DatabaseService(conn);

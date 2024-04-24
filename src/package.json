@@ -4,7 +4,7 @@
   "description": "Software Engineering Coursework",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon index.mjs",
+    "start": "node index.mjs",
     "watch": "pug -w src/views/index.pug",
     "dev": "concurrently \"npm run start\" \"npm run watch\"",
     "build": "webpack",
