@@ -1,3 +1,8 @@
+
+body {
+    background-color: darkcyan;
+}
+
 :root {
     --clr-table: rgba(0, 0, 0, 0.75);
 }
@@ -6,6 +11,7 @@ table {
     border: 1px solid var(--clr-table);
     border-collapse: collapse;
     width: 100%;
+    background-color: ghostwhite;
 }
 
 th,

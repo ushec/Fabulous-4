@@ -1,6 +1,7 @@
 extends layout
 block content
     h1 Login here
+    link(rel="stylesheet", href="login.css")
     form(action='/authenticate' method='POST')
         label(for='email') Enter your email:
         input('name'='email')
