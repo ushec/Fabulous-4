@@ -69,7 +69,7 @@ router.get('/register', function (req, res) {
   res.render('register');
  });
 
- router.post('/set-password', function (req, res) {
+router.post('/set-password', function (req, res) {
   params = req.body;
   var user = new User(params.email);
   try {

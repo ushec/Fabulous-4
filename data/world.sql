@@ -5416,6 +5416,21 @@ INSERT INTO `countrylanguage` VALUES ('ZWE','Nyanja','F',2.2);
 INSERT INTO `countrylanguage` VALUES ('ZWE','Shona','F',72.1);
 commit;
 
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+ `id` int NOT NULL,
+ `email` varchar(255) NOT NULL,
+ `password` varchar(255) NOT NULL
+);
+
+
+INSERT INTO `Users` (`id`, `email`, `password`) VALUES
+(1, 'kevin@kevin.com', ''),
+(2, 'lisa@lisa.com', ''),
+(3, 'arturo@arturo.com', ''),
+(4, 'Sobham@sobhan.com', '');
+commit;
 --
 -- Dumping events for database 'world'
 --

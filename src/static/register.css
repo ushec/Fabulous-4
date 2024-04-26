@@ -1,0 +1,12 @@
+body {
+    background-color: azure;
+    
+}
+h1 {
+    text-align: center;
+    text-decoration: dashed;
+}
+
+label {
+    font-family: cursive;
+}

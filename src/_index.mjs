@@ -9,7 +9,7 @@ const logDBversion  = require('../data/testDatabase');
 
 // Parse incoming request bodies with JSON payloads
 app.use(bodyParser.json());
-
+app.use(express.static('css'));
 // Parse incoming request bodies with URL-encoded payloads
 app.use(bodyParser.urlencoded({ extended: true }));
 

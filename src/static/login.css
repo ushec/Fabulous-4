@@ -1,0 +1,13 @@
+body {
+    background-color: beige;
+}
+
+h1 {
+    text-align: center;
+    text-shadow: 1.5px 1.5px brown;
+}
+
+label {
+    font-family: fantasy;
+
+}
