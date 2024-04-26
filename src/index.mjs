@@ -57,6 +57,12 @@ app.get("/cities", async (req, res) => {
     return res.render("cities", { rows, fields });
 });
 
+app.get("/countries", async (req, res) => {
+    const [rows, fields] = await db.getCountries();
+    /* Render cities.pug with data passed as plain object */
+    return res.render("countries", { rows, fields });
+});
+
 app.get("/cities/:id", async (req, res) => {
     const cityId = req.params.id;
     const city = await db.getCity(cityId);
